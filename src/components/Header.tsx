@@ -58,7 +58,9 @@ export default function Header({ lang }: { lang: string }) {
   ];
 
   const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/`;
-  const isDarkHeroContext = isHomePage && !isScrolled;
+  const isProductsPage = pathname.includes(`/${lang}/products`);
+  const isAboutPage = pathname.includes(`/${lang}/about`);
+  const isDarkHeroContext = (isHomePage || isProductsPage || isAboutPage) && !isScrolled;
 
   return (
     <header 

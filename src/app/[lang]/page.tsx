@@ -3,6 +3,7 @@ import StatsCounter from "@/components/StatsCounter";
 import ClientLogoTicker from "@/components/ClientLogoTicker";
 import { translations, homeTranslations, Locale } from '@/lib/i18n/translations';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home({ params: { lang } }: { params: { lang: string } }) {
   const t = translations[lang as Locale] || translations.en;
@@ -14,7 +15,14 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
       <section className="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 bg-navy">
-          <div className="absolute inset-0 bg-grid opacity-30"></div>
+          <Image 
+            src="https://electroalfa.ro/i/elements/301/ro/fabrica%20electroalfa%209%20(1)%20mob-01.png" 
+            alt="Electroalfa Industrial Facility" 
+            fill
+            className="object-cover opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/50 to-navy" />
         </div>
 
         {/* Blurred Glass Overlay */}
@@ -47,8 +55,10 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
             href={`/${lang}/products/medium-voltage`}
             className="col-span-1 md:col-span-2 bg-white border border-steel-dark rounded-3xl p-8 relative overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-end"
           >
-            <div className="absolute inset-0 bg-grid opacity-5 group-hover:opacity-10 transition-opacity"></div>
-            <div className="absolute top-8 right-8 w-12 h-12 bg-steel rounded-full flex items-center justify-center text-navy group-hover:bg-orange group-hover:text-white transition-colors">
+             <div className="absolute inset-0 grayscale group-hover:grayscale-0 opacity-10 group-hover:opacity-20 transition-all duration-500 scale-110 group-hover:scale-100">
+                <Image src="https://electroalfa.ro/i/elements/50/ro/img-div-slider-3-01.png" alt="" fill className="w-full h-full object-cover" />
+             </div>
+            <div className="absolute top-8 right-8 w-12 h-12 bg-steel rounded-full flex items-center justify-center text-navy group-hover:bg-orange group-hover:text-white transition-colors z-20">
               <ArrowRight size={24} className="group-hover:-rotate-45 transition-transform duration-300" />
             </div>
             <div className="relative z-10">
@@ -60,8 +70,10 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
             href={`/${lang}/products/low-voltage`}
             className="bg-white border border-steel-dark rounded-3xl p-8 relative overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-end"
           >
-             <div className="absolute inset-0 bg-grid opacity-5 group-hover:opacity-10 transition-opacity"></div>
-             <div className="absolute top-8 right-8 w-12 h-12 bg-steel rounded-full flex items-center justify-center text-navy group-hover:bg-orange group-hover:text-white transition-colors">
+              <div className="absolute inset-0 grayscale group-hover:grayscale-0 opacity-10 group-hover:opacity-20 transition-all duration-500 scale-110 group-hover:scale-100">
+                 <Image src="https://electroalfa.ro/i/elements/275/ro/img-div-slider-1-1.png" alt="" fill className="w-full h-full object-cover" />
+              </div>
+             <div className="absolute top-8 right-8 w-12 h-12 bg-steel rounded-full flex items-center justify-center text-navy group-hover:bg-orange group-hover:text-white transition-colors z-20">
                <ArrowRight size={24} className="group-hover:-rotate-45 transition-transform duration-300" />
              </div>
              <div className="relative z-10">
@@ -73,8 +85,10 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
             href={`/${lang}/products/steel-parts`}
             className="bg-white border border-steel-dark rounded-3xl p-8 relative overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-end"
           >
-             <div className="absolute inset-0 bg-grid opacity-5 group-hover:opacity-10 transition-opacity"></div>
-             <div className="absolute top-8 right-8 w-12 h-12 bg-steel rounded-full flex items-center justify-center text-navy group-hover:bg-orange group-hover:text-white transition-colors">
+              <div className="absolute inset-0 grayscale group-hover:grayscale-0 opacity-10 group-hover:opacity-20 transition-all duration-500 scale-110 group-hover:scale-100">
+                 <Image src="https://electroalfa.ro/i/elements/275/ro/img-div-slider-2.png" alt="" fill className="w-full h-full object-cover" />
+              </div>
+             <div className="absolute top-8 right-8 w-12 h-12 bg-steel rounded-full flex items-center justify-center text-navy group-hover:bg-orange group-hover:text-white transition-colors z-20">
                <ArrowRight size={24} className="group-hover:-rotate-45 transition-transform duration-300" />
              </div>
              <div className="relative z-10">

@@ -27,7 +27,33 @@ export default async function InvestorCategoryPage({
 }: {
   params: { lang: string; category: string };
 }) {
-  const documents = await getInvestorDocumentsByCategory(category, lang);
+  let documents = await getInvestorDocumentsByCategory(category, lang);
+
+  // Mock data for demo if Sanity is empty, based on official site documents
+  if (documents.length === 0) {
+    const mockDocs: { [key: string]: InvestorDocument[] } = {
+      reports: [
+        { _id: 'm1', title: lang === 'ro' ? 'Raport Curent - Transparență' : 'Current Report - Transparency', date: '15.04.2026', legalRequirement: true, fileUrl: '#', fileSize: 1250000 },
+        { _id: 'm2', title: lang === 'ro' ? 'Notificare Deținere peste 5%' : 'Major Holding Notification >5%', date: '10.03.2026', legalRequirement: true, fileUrl: '#', fileSize: 850000 },
+      ],
+      results: [
+        { _id: 'm3', title: lang === 'ro' ? 'Raport Audit 2025' : 'Audit Report 2025', date: '25.02.2026', legalRequirement: true, fileUrl: '#', fileSize: 4500000 },
+        { _id: 'm4', title: lang === 'ro' ? 'Rezultate Financiare T1 2026' : 'Q1 2026 Financial Results', date: '15.05.2026', legalRequirement: false, fileUrl: '#', fileSize: 2200000 },
+      ],
+      governance: [
+        { _id: 'm5', title: lang === 'ro' ? 'Act Constitutiv Actualizat' : 'Updated Articles of Association', date: '01.01.2026', legalRequirement: true, fileUrl: '#', fileSize: 1800000 },
+        { _id: 'm6', title: lang === 'ro' ? 'Regulament Consiliu Administrație' : 'Board of Directors Regulations', date: '15.12.2025', legalRequirement: false, fileUrl: '#', fileSize: 950000 },
+      ],
+      assemblies: [
+        { _id: 'm7', title: lang === 'ro' ? 'Convocator AGA 20.05.2026' : 'GMS Convocation 20.05.2026', date: '20.04.2026', legalRequirement: true, fileUrl: '#', fileSize: 500000 },
+        { _id: 'm8', title: lang === 'ro' ? 'Hotărâri AGA Aprilie 2026' : 'GMS Decisions April 2026', date: '15.04.2026', legalRequirement: true, fileUrl: '#', fileSize: 750000 },
+      ],
+      calendar: [
+        { _id: 'm9', title: lang === 'ro' ? 'Calendar Evenimente Corporative 2026' : 'Corporate Events Calendar 2026', date: '01.01.2026', legalRequirement: true, fileUrl: '#', fileSize: 300000 },
+      ]
+    };
+    documents = mockDocs[category] || [];
+  }
 
   return (
     <div className="space-y-12">
