@@ -139,8 +139,33 @@ export default function CommandMenu({ lang, isDark }: { lang: string; isDark?: b
               </div>
             </Command.Empty>
 
+            {/* Pages Section - Always searchable */}
+            <Command.Group heading={lang === 'ro' ? 'Pagini' : 'Pages'} className="text-xs font-bold text-navy/40 uppercase tracking-widest px-3 py-2 mt-4">
+              {[
+                { name: lang === 'ro' ? 'Acasă' : 'Home', href: `/${lang}` },
+                { name: lang === 'ro' ? 'Despre Noi' : 'About Us', href: `/${lang}/about` },
+                { name: lang === 'ro' ? 'Medie Tensiune' : 'Medium Voltage', href: `/${lang}/products/medium-voltage` },
+                { name: lang === 'ro' ? 'Joasă Tensiune' : 'Low Voltage', href: `/${lang}/products/low-voltage` },
+                { name: lang === 'ro' ? 'Confecții Metalice' : 'Steel Parts', href: `/${lang}/products/steel-parts` },
+                { name: lang === 'ro' ? 'Noutăți' : 'News', href: `/${lang}/news` },
+                { name: lang === 'ro' ? 'Investitori' : 'Investors', href: `/${lang}/investors` },
+                { name: lang === 'ro' ? 'Contact' : 'Contact', href: `/${lang}/contact` },
+              ].filter(page => page.name.toLowerCase().includes(search.toLowerCase()) || search === '').map(page => (
+                <Command.Item
+                  key={page.href}
+                  onSelect={() => onSelect(page.href)}
+                  className="flex items-center gap-3 p-3 rounded-xl cursor-pointer aria-selected:bg-steel transition-colors group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-navy/5 text-navy flex items-center justify-center shrink-0">
+                    <ArrowRight size={20} className="opacity-40" />
+                  </div>
+                  <span className="font-bold text-navy">{page.name}</span>
+                </Command.Item>
+              ))}
+            </Command.Group>
+
             {results.products.length > 0 && (
-              <Command.Group heading="Products" className="text-xs font-bold text-navy/40 uppercase tracking-widest px-3 py-2">
+              <Command.Group heading={lang === 'ro' ? 'Produse' : 'Products'} className="text-xs font-bold text-navy/40 uppercase tracking-widest px-3 py-2 mt-4">
                 {results.products.map((item) => (
                   <Command.Item
                     key={item._id}
@@ -161,7 +186,7 @@ export default function CommandMenu({ lang, isDark }: { lang: string; isDark?: b
             )}
 
             {results.investors.length > 0 && (
-              <Command.Group heading="Investor Reports" className="text-xs font-bold text-navy/40 uppercase tracking-widest px-3 py-2 mt-4">
+              <Command.Group heading={lang === 'ro' ? 'Rapoarte Investitori' : 'Investor Reports'} className="text-xs font-bold text-navy/40 uppercase tracking-widest px-3 py-2 mt-4">
                 {results.investors.map((item) => (
                   <Command.Item
                     key={item._id}
@@ -182,7 +207,7 @@ export default function CommandMenu({ lang, isDark }: { lang: string; isDark?: b
             )}
 
             {results.news.length > 0 && (
-              <Command.Group heading="News & Media" className="text-xs font-bold text-navy/40 uppercase tracking-widest px-3 py-2 mt-4">
+              <Command.Group heading={lang === 'ro' ? 'Știri și Media' : 'News & Media'} className="text-xs font-bold text-navy/40 uppercase tracking-widest px-3 py-2 mt-4">
                 {results.news.map((item) => (
                   <Command.Item
                     key={item._id}
