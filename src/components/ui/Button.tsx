@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 interface ButtonProps extends HTMLMotionProps<'button'> {
   variant?: 'primary' | 'secondary' | 'outline';
@@ -26,7 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <motion.button
         ref={ref}
         whileTap={{ scale: 0.98 }}
-        className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+        className={cn(baseStyles, variants[variant], sizes[size], className)}
         {...props}
       >
         {children}
